@@ -9,10 +9,11 @@ void setup()
 void testSerial()
 {
     Serial.print("hei");
-    delay(200);
+    delay(200); 
     digitalWrite(ledTest, HIGH);
 }
 void loop()
 {
     testSerial();
+    Serial.print(" ");
 }
