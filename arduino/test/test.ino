@@ -1,19 +1,23 @@
-int ledTest = 10;
+const int pushButton = 7;
+bool buttonVerdi;
+unsigned long currentMillis;
+int debounceTimer = 50;
+ButtonVerdi = digitalRead(pushButton);
 
-void setup()
-{
-    Serial.begin(9600);
-    pinMode(ledTest, OUTPUT);
+void setup(){
+pinMode(pushButton, INPUT);
 }
 
-void testSerial()
-{
-    Serial.print("hei");
-    delay(200); 
-    digitalWrite(ledTest, HIGH);
+void button(){
+    buttonVerdi = digitalRead(pushButton);
+    if (buttonVerdi == LOW){
+        currentMillis = millis();
+    }  
+    if((buttonVerdi == HIGH) && (currentMillis - currentMillisOld >= debounceTimer)){
+        f
+    }
 }
-void loop()
-{
-    testSerial();
-    Serial.print(" ");
+
+void loop(){
+
 }
