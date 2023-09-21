@@ -83,11 +83,11 @@
    "-IC:\\Users\\ellan\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
    "-IC:\\Users\\ellan\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\standard",
    "-IC:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel",
-   "C:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\kendyte_k210.c",
+   "C:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\esp8266.c",
    "-o",
-   "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\.arduino\\output\\libraries\\Adafruit_NeoPixel\\kendyte_k210.c.o"
+   "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\.arduino\\output\\libraries\\Adafruit_NeoPixel\\esp8266.c.o"
   ],
-  "file": "C:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\kendyte_k210.c"
+  "file": "C:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\esp8266.c"
  },
  {
   "directory": "c:\\Users\\ellan\\Documents\\iesl1001\\arduino",
@@ -139,10 +139,10 @@
    "-IC:\\Users\\ellan\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
    "-IC:\\Users\\ellan\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\standard",
    "-IC:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel",
-   "C:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\esp8266.c",
+   "C:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\kendyte_k210.c",
    "-o",
-   "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\.arduino\\output\\libraries\\Adafruit_NeoPixel\\esp8266.c.o"
+   "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\.arduino\\output\\libraries\\Adafruit_NeoPixel\\kendyte_k210.c.o"
   ],
-  "file": "C:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\esp8266.c"
+  "file": "C:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\kendyte_k210.c"
  }
 ]

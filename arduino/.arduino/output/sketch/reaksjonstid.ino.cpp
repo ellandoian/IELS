@@ -21,7 +21,7 @@ int dly = 65;
 void setup();
 #line 26 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\reaksjonstid\\reaksjonstid.ino"
 void spill();
-#line 116 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\reaksjonstid\\reaksjonstid.ino"
+#line 115 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\reaksjonstid\\reaksjonstid.ino"
 void loop();
 #line 18 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\reaksjonstid\\reaksjonstid.ino"
 void setup()
@@ -96,7 +96,6 @@ void spill()
             {
                 score += 32-i;
             }
-            Serial.print(score);
             aP = false;
             o++;
         }

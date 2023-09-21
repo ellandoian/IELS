@@ -87,7 +87,6 @@ void spill()
             {
                 score += 32-i;
             }
-            Serial.print(score);
             aP = false;
             o++;
         }
