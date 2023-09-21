@@ -14,7 +14,7 @@ void button(){
         currentMillis = millis();
     }  
     if((buttonVerdi == HIGH) && (currentMillis - currentMillisOld >= debounceTimer)){
-        f
+        
     }
 }
 
