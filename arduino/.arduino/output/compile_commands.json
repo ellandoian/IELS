@@ -23,6 +23,7 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\ellan\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
    "-IC:\\Users\\ellan\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\standard",
+   "-IC:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel",
    "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\.arduino\\output\\sketch\\reaksjonstid.ino.cpp",
    "-o",
    "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\.arduino\\output\\sketch\\reaksjonstid.ino.cpp.o"

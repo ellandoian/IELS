@@ -11,6 +11,31 @@
   },
   {
     "Sourcefile": "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\.arduino\\output\\sketch\\reaksjonstid.ino.cpp",
+    "Include": "Adafruit_NeoPixel.h",
+    "Includepath": "C:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel"
+  },
+  {
+    "Sourcefile": "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\.arduino\\output\\sketch\\reaksjonstid.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\Adafruit_NeoPixel.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\esp.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\esp8266.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "C:\\Users\\ellan\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\kendyte_k210.c",
     "Include": "",
     "Includepath": null
   }
