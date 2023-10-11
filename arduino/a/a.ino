@@ -1,21 +1,30 @@
-#include <Arduino.h>
-#include <SPI.h>
-#include <U8g2lib.h>
+#include <Servo.h>
 
-U8G2_SSD1306_128X64_NONAME_1_4W_SW_SPI u8g2(U8G2_R0, /* clock=*/ 13, /* data=*/ 11, /* cs=*/ 10, /* dc=*/ 9, /* reset=*/ 8);
+#define servoHighPIN 7
+#define servoLowPIN 8
+#define photoTR A3
+#define photoTL A2
+#define photoBR A1
+#define photoBL A0
 
-void setup(void) {
-  u8g2.begin();
+Servo servoLow;
+Servo servoHigh;
+int lightArray[4];
+
+void setup() {
+    servoLow.attach(servoLowPIN);
+    servoHigh.attach(servoHighPIN);
+    pinMode(photoTR, INPUT);
+    pinMode(photoTL, INPUT);
+    pinMode(photoBR, INPUT);
+    pinMode(photoTL, INPUT);
 }
 
-void loop(void) {
-  u8g2.firstPage();
-  do {
-    
-    u8g2.setFont(u8g2_font_ncenB14_tr);
-    int q = 3;    
-    u8g2.setCursor(64, 32);
-    u8g2.print(q);
-  } while ( u8g2.nextPage() );
-  delay(1000);
+void light() {
+
+}
+
+void loop() {
+    servoLow.write(30);
+    servoHigh.write(120);
 }

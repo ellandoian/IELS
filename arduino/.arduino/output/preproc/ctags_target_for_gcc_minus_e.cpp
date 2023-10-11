@@ -1,90 +1,49 @@
-# 1 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteri\\zumoBatteri.ino"
-# 2 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteri\\zumoBatteri.ino" 2
-# 3 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteri\\zumoBatteri.ino" 2
-# 4 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteri\\zumoBatteri.ino" 2
+# 1 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\lysFolger\\lysFolger.ino"
+# 2 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\lysFolger\\lysFolger.ino" 2
 
-U8G2_SSD1306_128X64_NONAME_1_4W_SW_SPI u8g2((&u8g2_cb_r0), /* clock=*/13, /* data=*/11, /* cs=*/10, /* dc=*/9, /* reset=*/8);
 
-int voltSensor = A0;
-int potMeter = A1;
-float temperatur;
-int pushButton = 7;
-bool buttonValue = false;
-float voltage;
-bool valg = 0;
-bool a = false;
 
-void setup()
-{
+
+
+
+
+int bigLight;
+int bigIndex;
+
+Servo servoLow;
+Servo servoHigh;
+int lightArray[4];
+
+void setup() {
     Serial.begin(9600);
-    u8g2.begin();
-    pinMode(pushButton, 0x0);
+    servoLow.attach(8, -180, 180);
+    servoHigh.attach(7, -180, 180);
+    pinMode(A3, 0x0);
+    pinMode(A2, 0x0);
+    pinMode(A1, 0x0);
+    pinMode(A2, 0x0);
 }
 
-void button()
-{
-    if (digitalRead(pushButton) == 0x1)
-    {
-        a = true;
-        Serial.print("a");
+void light() {
+    lightArray[0]=analogRead(A3);
+    lightArray[1]=analogRead(A2);
+    lightArray[2]=analogRead(A1);
+    lightArray[3]=analogRead(A0);
+    bigLight=0;
+    bigIndex=0;
+    for (int i=0; i<4; i++) {
+        Serial.println(i);
+        if (lightArray[i] > bigLight) {
+            bigLight=lightArray[i];
+            bigIndex=i;
+        }
     }
-    if ((digitalRead(pushButton) == 0x0) && (a == true))
-    {
-        valg != valg;
-        a = false;
-        Serial.print("b");
-    }
+
+
 }
 
-void voltReader()
-{
-    int sensorValue = analogRead(voltSensor);
-    voltage = sensorValue * (5.0 / 1023.0);
-}
-
-void potMeterMaaler()
-{
-    int potMeterValue = analogRead(potMeter);
-    temperatur = potMeterValue * (30.0 / 1023.0);
-    Serial.println(temperatur);
-    delay(300);
-}
-
-void skjerm()
-{
-    button();
-    if (valg == false)
-    {
-        u8g2.firstPage();
-        do
-        {
-            voltReader();
-            u8g2.setFont(u8g2_font_ncenB14_tr);
-            u8g2.drawRFrame(5, 13, 90, 22, 7);
-            u8g2.setCursor(55, 32);
-            u8g2.print(voltage);
-            u8g2.drawStr(10, 32, "V =");
-        } while (u8g2.nextPage());
-    }
-    if (valg == true)
-    {
-        u8g2.firstPage();
-        do
-        {
-            potMeterMaaler();
-            u8g2.setFont(u8g2_font_ncenB14_tr);
-            u8g2.drawRFrame(5, 13, 90, 22, 7);
-            u8g2.setCursor(55, 32);
-            u8g2.print(temperatur);
-            u8g2.drawStr(10, 32, "T =");
-        } while (u8g2.nextPage());
-    }
-}
-
-
-void loop()
-{
-    // potMeterMaaler();
-    //  voltReader();
-    skjerm();
+void loop() {
+    servoLow.write(30);
+    servoHigh.write(120);
+    light();
 }
