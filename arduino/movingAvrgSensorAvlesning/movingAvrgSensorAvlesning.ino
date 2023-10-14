@@ -1,27 +1,24 @@
-# 1 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\movingAvrgSensorAvlesning\\movingAvrgSensorAvlesning.ino"
-# 2 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\movingAvrgSensorAvlesning\\movingAvrgSensorAvlesning.ino" 2
+#include <movingAvg.h>
 
 int LedPin = 7;
 int photoresistor = A5;
 unsigned long blinkMillis = 0;
-bool state = 0x1;
+bool state = HIGH;
 movingAvg lightSensor(5); //setter opp lightSensor til å bestå av fem data punkter
 
 void setup()
 {
     lightSensor.begin(); //starter variabelen lightSensor som et moving average av 5 lesniger
-    pinMode(LedPin, 0x1);
-    digitalWrite(LedPin, 0x1);
+    pinMode(LedPin, OUTPUT);
+    digitalWrite(LedPin, HIGH);
 }
 
 int sensor()
 {
-    int i = lightSensor.reading(analogRead(photoresistor));
-    return i;
+    int i = lightSensor.reading(analogRead(photoresistor)); 
+    return i; 
     /*tar måling av photoresistor og regner ut gjennomsnittet av de siste fem lesningene, 
-
     om det har ått mindre enn fem iterasjoner, tar den gjennomsnittet av antall datapunkter den har*/
-# 22 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\movingAvrgSensorAvlesning\\movingAvrgSensorAvlesning.ino"
 }
 
 int speed(int x) //tar inn en sensorverdi (x) og setter hastighetene til 1, eller 6 ganger så kjapt 
@@ -44,7 +41,7 @@ void blink()
     {
         state = !state; //endrer state slik at LED vil blinke
         digitalWrite(LedPin, state);
-        blinkMillis = millis();
+        blinkMillis = millis(); 
     }
 }
 

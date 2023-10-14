@@ -2,6 +2,6 @@
     "board": "arduino:avr:uno",
     "programmer": "avrisp",
     "output": ".arduino/output",
-    "sketch": "lysFolger/lysFolger.ino",
+    "sketch": "movingAvrgSensorAvlesning/movingAvrgSensorAvlesning.ino",
     "port": "COM4"
 }
