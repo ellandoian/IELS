@@ -1,54 +1,33 @@
-# 1 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\movingAvrgSensorAvlesning\\movingAvrgSensorAvlesning.ino"
-# 2 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\movingAvrgSensorAvlesning\\movingAvrgSensorAvlesning.ino" 2
+# 1 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\poengvisning\\poengvisning.ino"
+# 2 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\poengvisning\\poengvisning.ino" 2
+const int ledCount = 32;
+const int ledPin = 2;
+Adafruit_NeoPixel pixels(ledCount, ledPin, ((1 << 6) | (1 << 4) | (0 << 2) | (2)) /*|< Transmit as G,R,B*/ + 0x0000 /*|< 800 KHz data transmission*/);
 
-int LedPin = 7;
-int photoresistor = A5;
-unsigned long blinkMillis = 0;
-bool state = 0x1;
-movingAvg lightSensor(5); //setter opp lightSensor til å bestå av fem data punkter
+uint16_t allLys[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31};
+int score = 0;
+int tellerA;
+int tellerB;
 
 void setup()
 {
-    lightSensor.begin(); //starter variabelen lightSensor som et moving average av 5 lesniger
-    pinMode(LedPin, 0x1);
-    digitalWrite(LedPin, 0x1);
-}
-
-int sensor()
-{
-    int i = lightSensor.reading(analogRead(photoresistor));
-    return i;
-    /*tar måling av photoresistor og regner ut gjennomsnittet av de siste fem lesningene, 
-
-    om det har ått mindre enn fem iterasjoner, tar den gjennomsnittet av antall datapunkter den har*/
-# 22 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\movingAvrgSensorAvlesning\\movingAvrgSensorAvlesning.ino"
-}
-
-int speed(int x) //tar inn en sensorverdi (x) og setter hastighetene til 1, eller 6 ganger så kjapt 
-{
-    int a;
-    if (x < 100)
-    {
-        a = 100;
-    }
-    else
-    {
-        a = 500;
-    }
-    return a; //returnerer hastigheten
-}
-
-void blink()
-{
-    if (millis() >= blinkMillis + speed(sensor())) //kjører hver hver gang intervallet speed() har hendt
-    {
-        state = !state; //endrer state slik at LED vil blinke
-        digitalWrite(LedPin, state);
-        blinkMillis = millis();
-    }
+    pixels.begin();
+    Serial.begin(9600);
 }
 
 void loop()
 {
-    blink();
+    tellerA = score % ledCount;
+    tellerB = (score-tellerA) / ledCount;
+    for(tellerB;tellerB>0;tellerB){}
+    /*for(score; score > 0; score--){
+
+        for(tellerA; score)
+
+        pixels.setPixelColor(allLys[tellerA], pixels.Color(180, 0, 60));
+
+        pixels.show();
+
+    }*/
+# 27 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\poengvisning\\poengvisning.ino"
 }

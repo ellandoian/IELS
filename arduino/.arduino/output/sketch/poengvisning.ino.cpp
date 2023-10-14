@@ -1,3 +1,5 @@
+#include <Arduino.h>
+#line 1 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\poengvisning\\poengvisning.ino"
 #include <Adafruit_NeoPixel.h>
 const int ledCount = 32;
 const int ledPin = 2;
@@ -8,6 +10,11 @@ int score = 0;
 int tellerA;
 int tellerB;
 
+#line 11 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\poengvisning\\poengvisning.ino"
+void setup();
+#line 17 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\poengvisning\\poengvisning.ino"
+void loop();
+#line 11 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\poengvisning\\poengvisning.ino"
 void setup()
 {
     pixels.begin();
