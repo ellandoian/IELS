@@ -16,7 +16,7 @@ float sensor()
     float value = 0;
     for (int i = 0; i < 5; i++)
     {
-        value = value + analogRead(photoresistor); //summerer fem sensor avlesninger 
+        value += analogRead(photoresistor); //summerer fem sensor avlesninger 
     }
     return average = value / 5; //returnerer den gjennomsnitlige sensorverdien over fem avlesninger
 }
