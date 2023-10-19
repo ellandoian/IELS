@@ -3,5 +3,5 @@
     "programmer": "avrisp",
     "output": ".arduino/output",
     "sketch": "3LEDmillisLangtknappeklikk/3LEDmillisLangtknappeklikk.ino",
-    "port": "COM6"
+    "port": "COM4"
 }
