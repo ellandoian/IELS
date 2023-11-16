@@ -1,6 +1,5 @@
-# 1 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteriV2\\zumoBatteriV2.ino"
-# 2 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteriV2\\zumoBatteriV2.ino" 2
-
+#include <Zumo32U4.h>
+#include <Zumo32U4Encoders.h>
 
 Zumo32U4Encoders encoder;
 Zumo32U4Motors motors;
@@ -10,7 +9,7 @@ float q, i, totDiss;
 bool A = 1;
 unsigned long currentMillis, sMillis, t;
 const int speedCheck = 250;
-const int O = 12;
+const int O = 12; 
 int screenCount = 1;
 
 float distance()
@@ -28,7 +27,7 @@ float distance()
         q = sqrt(L * L + R * R);
         A = 1;
     }
-    float dis = ((((i - q) / (910)) * O)>0?(((i - q) / (910)) * O):-(((i - q) / (910)) * O));
+    float dis = abs(((i - q) / (910)) * O);
     return dis;
 }
 
@@ -47,15 +46,7 @@ float speed(float x)
 void screen1(){
     display.clear();
     display.gotoXY(0,0);
-    display.print((reinterpret_cast<const __FlashStringHelper *>(
-# 49 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteriV2\\zumoBatteriV2.ino" 3
-                 (__extension__({static const char __c[] __attribute__((__progmem__)) = (
-# 49 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteriV2\\zumoBatteriV2.ino"
-                 "Speed:"
-# 49 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteriV2\\zumoBatteriV2.ino" 3
-                 ); &__c[0];}))
-# 49 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteriV2\\zumoBatteriV2.ino"
-                 )));
+    display.print(F("Speed:"));
     display.print(speed(distance()));
 }
 

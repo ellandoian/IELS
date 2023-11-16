@@ -3,9 +3,9 @@
   "builtInToolsFolders": "",
   "compiler.optimization_flags": "",
   "customBuildProperties": "",
-  "fqbn": "arduino:avr:uno",
+  "fqbn": "pololu-a-star:avr:a-star32U4",
   "hardwareFolders": "C:\\Users\\ellan\\AppData\\Local\\Arduino15\\packages",
   "otherLibrariesFolders": "C:\\Users\\ellan\\Documents\\Arduino\\libraries",
   "runtime.ide.version": "10607",
-  "sketchLocation": "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\3LEDmillisLangtknappeklikk"
+  "sketchLocation": "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteriV2"
 }
