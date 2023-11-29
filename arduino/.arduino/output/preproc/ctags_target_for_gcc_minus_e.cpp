@@ -1,106 +1,70 @@
-# 1 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteriV2\\zumoBatteriV2.ino"
-# 2 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteriV2\\zumoBatteriV2.ino" 2
+# 1 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\a\\a.ino"
+# 2 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\a\\a.ino" 2
+# 3 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\a\\a.ino" 2
 
-
-Zumo32U4Encoders encoder;
 Zumo32U4Motors motors;
+Zumo32U4ButtonA buttonA;
+Zumo32U4ButtonB buttonB;
+Zumo32U4ButtonC buttonC;
+Zumo32U4IMU imu;
 Zumo32U4OLED display;
+bool b = true;
+# 12 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\a\\a.ino" 2
+int deg90Check;
 
-float q, i, totDiss;
-bool A = 1;
-unsigned long currentMillis, sMillis, t;
-const int speedCheck = 250;
-const int O = 12;
-int screenCount = 1;
-
-float distance()
+void turn90old(int x)
 {
-    float L = encoder.getCountsLeft();
-    float R = encoder.getCountsRight();
-    if (A == 1)
+    int i = 1;
+    while (i <= x)
     {
-        i = sqrt(L * L + R * R);
-        A = 0;
-        t = millis();
+        motors.setSpeeds(-100, 100);
+        while ((int32_t)turnAngle < (turnAngle1*88))
+        {
+            turnSensorUpdate();
+        }
+        turnSensorReset();
+        motors.setSpeeds(0, 0);
+        i++;
     }
-    if ((millis() - t) >= speedCheck)
+}
+
+void square()
+{
+    unsigned long time = millis();
+    static int check, prevCheck;
+    for (int i = 0; i <= 4; i)
     {
-        q = sqrt(L * L + R * R);
-        A = 1;
+        motors.setSpeeds(150, 150);
+        if ((millis() - 2500) > time)
+        {
+            motors.setSpeeds(0, 0);
+            delay(100);
+            turn90old(1);
+            time = millis();
+            i++;
+        }
     }
-    float dis = ((((i - q) / (910)) * O)>0?(((i - q) / (910)) * O):-(((i - q) / (910)) * O));
-    return dis;
 }
 
-float toDistance(float y)
+void turn90()
 {
-    totDiss = (totDiss + y)/100; //totDiss + (y/100)
-    return totDiss;
-}
-
-
-float speed(float x)
-{
-    float hastighet = x * ( 1000/speedCheck);
-    return hastighet;
-}
-void screen1(){
-    display.clear();
-    display.gotoXY(0,0);
-    display.print((reinterpret_cast<const __FlashStringHelper *>(
-# 49 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteriV2\\zumoBatteriV2.ino" 3
-                 (__extension__({static const char __c[] __attribute__((__progmem__)) = (
-# 49 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteriV2\\zumoBatteriV2.ino"
-                 "Speed:"
-# 49 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteriV2\\zumoBatteriV2.ino" 3
-                 ); &__c[0];}))
-# 49 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\zumoBatteriV2\\zumoBatteriV2.ino"
-                 )));
-    display.print(speed(distance()));
-}
-
-void screen2(){
-    display.clear();
-    display.gotoXY(0,32);
-    display.print("Distance:");
-    display.print("  ");
-    display.print(toDistance(distance()));
-}
-
-void Oled() {
-    const int screenTime = 5000;
-    if ((millis()-sMillis)>= screenTime){
-        screenCount++;
-    }
-    if (screenCount == 1){
-        screen1();
-    }
-    else if (screenCount == 2){
-        screen2();
-    }
-    else {
-        screenCount = 0;
+    motors.setSpeeds(-100, 100);
+    turnSensorUpdate();
+    if (turnAngle > (turnAngle1 * 88))
+    {
+        motors.setSpeeds(0, 0);
+        turnSensorReset();
+        deg90Check++;
     }
 }
 
 void setup()
 {
     Serial.begin(9600);
-    display.clear();
+    turnSensorSetup();
 }
 
 void loop()
 {
-    Oled();
-    motors.setSpeeds(200, 200);
-    // distance();
-    if ((millis() - currentMillis) >= speedCheck)
-    {
-        float d = distance();
-        //Serial.println(d);
-        currentMillis = millis();
-        Serial.println(speed(distance()));
-        Serial.print("totaldiss");
-        Serial.println(toDistance(d));
-    }
+    square();
 }

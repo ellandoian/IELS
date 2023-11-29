@@ -1,0 +1,7 @@
+#line 1 "C:\\Users\\ellan\\Documents\\iesl1001\\arduino\\3LEDmillisLangtknappeklikk\\.vscode\\arduino.json"
+{
+    "board": "arduino:avr:uno",
+    "programmer": "avrisp",
+    "output": ".arduino/output",
+    "sketch": "3LEDmillisLangtknappeklikk.ino"
+}

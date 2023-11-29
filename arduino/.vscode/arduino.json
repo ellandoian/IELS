@@ -2,6 +2,6 @@
     "board": "pololu-a-star:avr:a-star32U4",
     "programmer": "avrisp",
     "output": ".arduino/output",
-    "sketch": "zumoBatteriV2/zumoBatteriV2.ino",
+    "sketch": "a/a.ino",
     "port": "COM7"
 }

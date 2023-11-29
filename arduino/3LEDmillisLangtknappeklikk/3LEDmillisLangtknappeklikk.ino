@@ -7,7 +7,7 @@ unsigned long pressTime;
 unsigned long checkTime;
 int intervall = 500;
 int pushButton = 2;
-bool valg, longValg, a, b, state = true;
+bool valg, longValg, buttonVar, longButtonVar, state = true;
 const int longButtonTimer = 2000;
 
 void setup()
@@ -19,38 +19,38 @@ void setup()
 
 bool longButton() // funksjonen som ser om det er langt knappetrykk
 {
-    if (b == false) //så lenge b er usann vill de to tids variablene bli opptatert
+    if (longButtonVar == false) //så lenge longButtonVar er usann vill de to tids variablene bli opptatert
     {
         checkTime = millis(); 
         pressTime = millis(); 
     }
     if (digitalRead(pushButton) == HIGH) 
     {
-        b = true; // setter b til true mens knappen er klikket ned, siden b er sann vil kun pressTime tids variabelen opptaters
+        longButtonVar = true; // setter longButtonVar til true mens knappen er klikket ned, siden longButtonVar er sann vil kun pressTime tids variabelen opptaters
         pressTime = millis();
     }
-    if ((digitalRead(pushButton) == LOW) && (b == true) && (longButtonTimer <= pressTime - checkTime)) // vil kjøre når knappen slippes og den har blitt holdt nedei lengre enn 2 sekunder
+    if ((digitalRead(pushButton) == LOW) && (longButtonVar == true) && (longButtonTimer <= pressTime - checkTime)) // vil kjøre når knappen slippes og den har blitt holdt nedei lengre enn 2 sekunder
     {                                                                                 
         longValg = !longValg;
-        b = false;
+        longButtonVar = false;
     }
-    else if ((digitalRead(pushButton) == LOW) && (b == true) && (longButtonTimer >= pressTime - checkTime))
+    else if ((digitalRead(pushButton) == LOW) && (longButtonVar == true) && (longButtonTimer >= pressTime - checkTime))
     {
-        b = false; //om knappen har blitt holdt nede i mindre enn 2 sekunder vil b bli satt til false uansett, slik at begge tidsvariablene kan oppdateres
+        longButtonVar = false; //om knappen har blitt holdt nede i mindre enn 2 sekunder vil longButtonVar bli satt til false uansett, slik at begge tidsvariablene kan oppdateres
     }
     return longValg;
 }
 
-bool button() // må initaliserer "valg" og "a" i oppstart
+bool button() // må initaliserer "valg" og "buttonVar" i oppstart
 {
     if (digitalRead(pushButton) == HIGH)
     {
-        a = true; // setter a til true mens knappen er klikket ned
+        buttonVar = true; // setter buttonVar til true mens knappen er klikket ned
     }
-    if ((digitalRead(pushButton) == LOW) && (a == true)) // vil kjøre når knappen slippes og endrer retur variablen
+    if ((digitalRead(pushButton) == LOW) && (buttonVar == true)) // vil kjøre når knappen slippes og endrer retur variablen
     {
         valg = !valg;
-        a = false;
+        buttonVar = false;
     }
     return valg;
 }
@@ -64,12 +64,12 @@ void switcher()
     }
     else
     {
-        bool a = button();
-        if (a != lastButtonState) // om button() har endret seg vil det endres hvilket lys som er på
+        bool buttonVar = button();
+        if (buttonVar != lastButtonState) // om button() har endret seg vil det endres hvilket lys som er på
         {
             digitalWrite(LedPin2, lastButtonState);
             digitalWrite(LedPin3, !lastButtonState);
-            lastButtonState = a;
+            lastButtonState = buttonVar;
         }
     }
 }

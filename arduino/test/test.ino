@@ -1,23 +1,13 @@
-const int pushButton = 7;
-bool buttonVerdi;
-unsigned long currentMillis;
-int debounceTimer = 50;
-ButtonVerdi = digitalRead(pushButton);
-
 void setup(){
-pinMode(pushButton, INPUT);
+Serial.begin(9600);
 }
-
-void button(){
-    buttonVerdi = digitalRead(pushButton);
-    if (buttonVerdi == LOW){
-        currentMillis = millis();
-    }  
-    if((buttonVerdi == HIGH) && (currentMillis - currentMillisOld >= debounceTimer)){
-        
-    }
-}
-
 void loop(){
-
+ static int hasrun = 1;
+ delay(3000);
+ if (hasrun == 1){
+    Serial.println('boo');
+    hasrun = 2;
+    delay(500);
+ }
+ Serial.println('ojoj');
 }
