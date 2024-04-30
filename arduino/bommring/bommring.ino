@@ -6,6 +6,21 @@ void setup() {
   APDS.begin();
 }
 
+bool button() // lag en variabel, som
+{
+  static bool valg, buttonVar = false;
+    if (digitalRead(pushButton) == HIGH)
+    {
+        buttonVar = true; // setter buttonVar til true mens knappen er klikket ned
+    }
+    if ((digitalRead(pushButton) == LOW) && (buttonVar == true)) // vil kjøre når knappen slippes og endrer retur variablen
+    {
+        valg = !valg;
+        buttonVar = false;
+    }
+    return valg;
+}
+
 int carCount(int proxy) {    //teller hvor mange biler som har kjørt forbi bommen, tar inn proximity dataen
   static int cCounter = -1;  //vil autmatisk telle +1 når koden kjøres første gang, verdi på -1 gjør at den starter på 0
   static bool countState = false;
@@ -32,11 +47,21 @@ int proxRead() {
   if (APDS.proximityAvailable()) proximity = APDS.readProximity();
   return proximity;
 }
-void IDcheck(){ //funksjonen som skal identisere fargene
-  const int baseColor[] = {63,39,29}; //endre dette etter hva farge sensoren måler når ingenting er under
+int* calibrateCol() {
+  int* base;
+  if
+}
+
+void IDcheck(int baseColor[]) {  //funksjonen som skal identisere fargene
   int* curColor;
   curColor = colorRead();
-  
+  static int colorCheck[3];
+  for (int i; i <= 2; i++) {
+    colorCheck[i] = baseColor[i] - curColor[i];
+  }
+  Serial.print(colorCheck[0]);
+  Serial.print(colorCheck[1]);
+  Serial.println(colorCheck[2]);
 }
 
 void display() {
@@ -61,7 +86,9 @@ void display() {
 void loop() {
   //colorRead();
   //proxRead();
-  potVal = analogRead(potPin); //alt med "pot" i seg er bare for testing, skal fjernes fra ferdig produkt
-  if (potVal < 900) display(); //kan starte og stoppe vising av målinger med potmetere (gadd ikke å lage bryter)
+  potVal = analogRead(potPin);  //alt med "pot" i seg er bare for testing, skal fjernes fra ferdig produkt
+  if (potVal < 900) display();  //kan starte og stoppe vising av målinger med potmetere (gadd ikke å lage bryter)
+  if (potVal > 2000) IDcheck();
+  //Serial.println(potVal);
   delay(100);
 }
